@@ -1,6 +1,6 @@
 #!/bin/bash
 
-isclem=$(ps -A | grep clementine)
+isclem=$(ps -A | grep vlc)
 if [ "$1" == "help" ];then
 	echo FIP, Jazz24, FMUS, CROJ, DLF, RFI
 else
@@ -34,10 +34,9 @@ else
 	
 	
 	if [ -z "$isclem" ]; then
-		clementine &
-		clementine -l $station
+		vlc $station &
 	else
-		clementine -u;
-		clementine -l $station
+		killall vlc;
+		vlc $station &
 	fi
 fi
